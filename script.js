@@ -3,6 +3,20 @@ const banco = [
     {tarefa: 'estudar', status: 'checked'}
 ]
 
+
+// Funções
+function openModal() {
+    let newItem = document.querySelector('.modal-new-item')
+    newItem.classList.add('active')
+}
+
+function closeModal(event) {
+    clearValues()
+    let newItem = document.querySelector('.modal-new-item')
+    newItem.classList.remove('active')
+}
+
+
 const getBanco = () => JSON.parse(localStorage.getItem('db_tarefa')) ?? []
 const setBanco = (db_tarefa) => localStorage.setItem('db_tarefa', JSON.stringify(db_tarefa))
 
@@ -18,10 +32,18 @@ const createItem = (tarefa, status, index) => {
     document.querySelector('.todoList').appendChild(div)
 }
 
-const addItem = () => {
-    
+const addItem = (event) => {
+    const elemen = document.getElementById('add-item').value
+    const tecla = event.key
+    if (tecla == 'Enter' || event.target.type == 'button') {
+        banco.push({tarefa: elemen, status: ''})
+        closeModal()
+    }
 }
 
+const clearValues = () => {
+    document.getElementById('add-item').value = ''
+}
 
 const render = () => {
     banco.forEach((item, index) => {
@@ -29,23 +51,7 @@ const render = () => {
     })
 }
 
-
-
 render()
-
-// Funções
-function openModal() {
-    let newItem = document.querySelector('.modal-new-item')
-    newItem.classList.add('active')
-}
-
-function closeModal(event) {
-    let newItem = document.querySelector('.modal-new-item')
-    newItem.classList.remove('active')
-}
-
-
-
 
 // Events Listeners
 document.getElementById('add-item-btn')
@@ -53,3 +59,9 @@ document.getElementById('add-item-btn')
 
 document.getElementById('close-modal')
     .addEventListener('click', closeModal)
+
+document.getElementById('add-item')
+    .addEventListener('keydown', addItem)
+
+document.querySelector('.modal-new-item')
+    .addEventListener('click', addItem)

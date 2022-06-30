@@ -179,12 +179,21 @@ header label {
     position: relative;
 }
 
-.add-item-cont > input[type="button"] {
+#close-modal {
     position: absolute;
     top: 0;
     right: 0;
     background-color: #EA4C88;
     margin: 8px;
+    padding: 8px;
+    border-radius: 20px;
+    width: 30px;
+    height: 36px;
+    text-align: center;
+    font-weight: bold;
+
+    user-select: none;
+    cursor: pointer;
 }
 
 #add-item {
