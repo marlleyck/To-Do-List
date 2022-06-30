@@ -16,10 +16,10 @@ function closeModal(event) {
 }
 
 
-
 const createItem = (tarefa, status, index) => {
     const div = document.createElement('div')
     div.classList.add('tarefa')
+    div.dataset.index = `${index}`
 
     div.innerHTML = `
                 <input type="checkbox" ${status} data-index="${index}">
@@ -75,19 +75,26 @@ const clickItem = (event) => {
     }
 }  
 
-let itemSearch;
 
-const search = () => {
+
+const search = (event) => {
+    const todoList = document.querySelectorAll('.todoList .tarefa')
     const banco = getBanco()
     let search_box = document.getElementById('search')
-    banco.map((item) => {
-        if (item.tarefa == search_box.value) {
-            itemSearch = item.tarefa
-            console.log(itemSearch)
-        }
-    })
-}
 
+
+    const tecla = event.key
+    if (tecla == 'Enter' || event.target.id == 'search-svg') {
+        banco.map((item, index) => {
+            if (item.tarefa == search_box.value) {
+                todoList[index].classList.add('div-hover')
+                setTimeout(() => {
+                    todoList[index].classList.remove('div-hover')
+                }, 1600)
+            }
+        })
+    } 
+}
 
 const render = () => {
     clearList()
@@ -119,3 +126,6 @@ document.querySelector('.todoList')
 
 document.getElementById('search-icon')
     .addEventListener('click', search)
+
+document.getElementById('search')
+    .addEventListener('keypress', search)
