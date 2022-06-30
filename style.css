@@ -197,6 +197,13 @@ header label {
     cursor: pointer;
 }
 
+#espec {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #add-item {
     outline: none;
     border: none;
