@@ -87,6 +87,7 @@ const search = (event) => {
     if (tecla == 'Enter' || event.target.id == 'search-svg') {
         banco.map((item, index) => {
             if (item.tarefa == search_box.value) {
+                search_box.value = ''
                 todoList[index].classList.add('div-hover')
                 setTimeout(() => {
                     todoList[index].classList.remove('div-hover')
