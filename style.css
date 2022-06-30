@@ -77,6 +77,13 @@ header label {
     border: none;
     border-bottom: 1px solid gray;
     background-color: #333333;
+    color: white;
+    font-size: 25px;
+    width: 175px;
+}
+
+#search::placeholder {
+    font-size: 18px;
 }
 
 .todoList {
