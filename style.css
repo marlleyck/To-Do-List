@@ -224,6 +224,14 @@ header label {
     animation: light ease-out 1.5s;
 }
 
+.checking {
+    background-color: #333;
+    color: rgb(26, 25, 25);
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+
 @keyframes light {
     0% {
         background-color: #333;

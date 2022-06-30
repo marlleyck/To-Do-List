@@ -15,19 +15,29 @@ function closeModal(event) {
     newItem.classList.remove('active')
 }
 
+let addCheck = ''
 
 const createItem = (tarefa, status, index) => {
     const div = document.createElement('div')
     div.classList.add('tarefa')
     div.dataset.index = `${index}`
 
+
     div.innerHTML = `
                 <input type="checkbox" ${status} data-index="${index}">
-                <div>${tarefa}</div>
+                <div id="espec" data-Sindex="${index}">${tarefa}</div>
                 <input type="button" value="X" data-index="${index}">
             `
     document.querySelector('.todoList').appendChild(div)
+
+    if (status == 'checked') {
+        document.querySelector(`[data-Sindex="${index}"]`).classList.add('checking')
+    } else {
+        document.querySelector(`[data-Sindex="${index}"]`).classList.remove('checking')
+    }
 }
+
+
 
 const addItem = (event) => {
     const elemen = document.getElementById('add-item').value
@@ -52,10 +62,18 @@ const clearList = () => {
     }
 }
 
+
+
 const attItem = (index) => {
     const banco = getBanco()
-    banco[index].status = banco[index].status == '' ? 'checked' : ''
-    setBanco(banco)
+    if (banco[index].status == '') {
+        banco[index].status = 'checked'
+        setBanco(banco)
+    } else {
+        banco[index].status = ''
+        addCheck = ''
+        setBanco(banco)
+    }
 }
 
 const deleteItem = (index) => {
