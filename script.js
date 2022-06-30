@@ -75,9 +75,17 @@ const clickItem = (event) => {
     }
 }  
 
+let itemSearch;
+
 const search = () => {
-    const search_box = document.getElementById('search')
-    
+    const banco = getBanco()
+    let search_box = document.getElementById('search')
+    banco.map((item) => {
+        if (item.tarefa == search_box.value) {
+            itemSearch = item.tarefa
+            console.log(itemSearch)
+        }
+    })
 }
 
 
