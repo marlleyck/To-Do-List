@@ -36,7 +36,6 @@ const insertDate = () => {
     }
 }
 
-insertDate()
 
 const createItem = (tarefa, status, index) => {
     const div = document.createElement('div')
@@ -146,7 +145,7 @@ const render = () => {
 }
 
 render()
-
+insertDate()
 
 // Events Listeners
 document.getElementById('add-item-btn')
