@@ -115,20 +115,28 @@ header label {
     height: 30px;
     border-radius: 50%;
     outline: none;
+
+    cursor: pointer;
 }
 
 .tarefa input[type="button"] {
-    width: 30px;
+    width: 35px;
     height: 30px;
     font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
     background-color: #EA4C88;
     border: none;
     outline: none;
     border-radius: 30%;
     color: white;
+    transition: .3s;
 
     cursor: pointer;
 }
+
+.tarefa input[type="button"]:hover {
+    background-color: #b41d57;
+} 
 
 
 .newItem {
