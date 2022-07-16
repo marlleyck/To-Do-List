@@ -60,6 +60,7 @@ header {
 
 #day-mon {
     font-size: 18px;
+    letter-spacing: 1px;
 }
 
 header label {

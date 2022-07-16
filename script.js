@@ -17,6 +17,27 @@ function closeModal(event) {
 
 let addCheck = ''
 
+
+const insertDate = () => {
+    const date = new Date()
+    const month = date.getMonth() + 1 
+    const day = date.getDate() 
+
+    if (month < 10) {
+        document.getElementById('day-mon').textContent = `/0${month}`
+    } else {
+        document.getElementById('day-mon').textContent = `/${month}`
+    }
+    
+    if (day < 10) {
+        document.getElementById('day').textContent = `0${day}`
+    } else {
+        document.getElementById('day').textContent = `${day}`
+    }
+}
+
+insertDate()
+
 const createItem = (tarefa, status, index) => {
     const div = document.createElement('div')
     div.classList.add('tarefa')
